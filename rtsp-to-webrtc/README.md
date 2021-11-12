@@ -1,6 +1,6 @@
-# Home Assistant Add-on: Example add-on
+# Home Assistant Add-on: RTSPtoWebRTC
 
-_Example add-on to use as a blueprint for new add-ons._
+_RTSP Stream to WebBrowser over WebRTC based on Pion. This is a Home Assistant Add-on packaging for an existing project https://github.com/deepch/RTSPtoWebRTC_
 
 ![Supports aarch64 Architecture][aarch64-shield]
 ![Supports amd64 Architecture][amd64-shield]
