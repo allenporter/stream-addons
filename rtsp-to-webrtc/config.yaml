@@ -1,0 +1,18 @@
+# https://developers.home-assistant.io/docs/add-ons/configuration#add-on-config
+name: RTSPtoWebRTC
+version: "0.0.1"
+slug: rtsp-to-webrtc
+description: RTSP Stream to WebBrowser over WebRTC based on Pion
+url: "https://github.com/allenporter/webrtc-addons/tree/main/rtsp-to-webrtc"
+arch:
+  - armhf
+  - armv7
+  - aarch64
+  - amd64
+  - i386
+init: false
+options:
+  message: "Hello world..."
+schema:
+  message: "str?"
+image: "ghcr.io/allenporter/{arch}-rtsp-to-webrtc-addon"
