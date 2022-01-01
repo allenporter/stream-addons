@@ -11,8 +11,4 @@ arch:
   - amd64
   - i386
 init: false
-options:
-  message: "Hello world..."
-schema:
-  message: "str?"
 image: "allenporter/rtsp-to-webrtc"
