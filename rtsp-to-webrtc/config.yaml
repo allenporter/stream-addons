@@ -15,4 +15,4 @@ options:
   message: "Hello world..."
 schema:
   message: "str?"
-image: "ghcr.io/allenporter/{arch}-rtsp-to-webrtc-addon"
+image: "allenporter/rtsp-to-webrtc"
