@@ -3,7 +3,7 @@ name: RTSPtoWebRTC
 version: "0.0.1"
 slug: rtsp-to-webrtc
 description: RTSP Stream to WebBrowser over WebRTC based on Pion
-url: "https://github.com/allenporter/webrtc-addons/tree/main/rtsp-to-webrtc"
+url: "https://github.com/allenporter/stream-addons/tree/main/rtsp-to-webrtc"
 arch:
   - armhf
   - armv7
