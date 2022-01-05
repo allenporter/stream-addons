@@ -12,11 +12,7 @@ This repository contains the following add-ons
 ### [RTSPToWebRTCPExample add-on](./rtsp-to-webrtc)
 
 <!--
-![Supports aarch64 Architecture][aarch64-shield]
 ![Supports amd64 Architecture][amd64-shield]
-![Supports armhf Architecture][armhf-shield]
-![Supports armv7 Architecture][armv7-shield]
-![Supports i386 Architecture][i386-shield]
 -->
 
 _RTSP Stream to WebBrowser over WebRTC based on Pion. This is a Home Assistant Add-on packaging for an existing project https://github.com/deepch/RTSPtoWebRTC_
