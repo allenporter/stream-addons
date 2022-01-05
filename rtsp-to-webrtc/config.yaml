@@ -11,7 +11,7 @@ ports:
 ports_description:
   8083/tcp: "RTSPtoWebRTC server"
 host_network: true
-discovery: rtsp_to_webrtc
+discovery: ["rtsp_to_webrtc"]
 watchdog: "http://[HOST]:[PORT:8083]/static"
 arch:
   - armhf
