@@ -1,0 +1,23 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# Start the RTSPtoWebRTC service
+# s6-overlay docs: https://github.com/just-containers/s6-overlay
+# ==============================================================================
+
+declare ingress_port
+
+ingress_port=$(bashio::addon.ingress_port)
+
+# Generate config.json
+bashio::log.info "Generating config.json"
+bashio::var.json \
+    port ${ingress_port} \
+    | tempio \
+        -template config-template \
+        -out config.json
+
+bashio::log.info "Starting discovery service"
+./discovery &
+
+bashio::log.info "Starting RSTPtoWebRTC"
+exec /app/rtsp-to-webrtc
