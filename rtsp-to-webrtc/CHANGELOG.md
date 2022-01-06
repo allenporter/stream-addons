@@ -1,5 +1,10 @@
 <!-- https://developers.home-assistant.io/docs/add-ons/presentation#keeping-a-changelog -->
 
+## 0.0.5
+
+- Expose on host network for initial testing
+- Simplify configuration, no longer using ingress for initial testing
+
 ## 0.0.4
 
 - Publish discovery messages with host:port
