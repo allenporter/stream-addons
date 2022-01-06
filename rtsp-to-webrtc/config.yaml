@@ -1,13 +1,12 @@
 # https://developers.home-assistant.io/docs/add-ons/configuration#add-on-config
 name: RTSPtoWebRTC
-version: "0.0.4"
+version: "0.0.5"
 slug: rtsp-to-webrtc
 description: RTSP Stream to WebBrowser over WebRTC based on Pion
 url: "https://github.com/allenporter/stream-addons/tree/main/rtsp-to-webrtc"
 panel_icon: mdi:webrtc
-webui: "http://[HOST]:[PORT:8083]"
 ports:
-  8083/tcp: null
+  8083/tcp: 8083
 ports_description:
   8083/tcp: "RTSPtoWebRTC server"
 host_network: true
