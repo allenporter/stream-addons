@@ -4,14 +4,6 @@
 # s6-overlay docs: https://github.com/just-containers/s6-overlay
 # ==============================================================================
 
-declare ingress_port
-declare ingress_ip
-
-ingress_port=$(bashio::addon.ingress_port)
-ingress_ip=$(bashio::addon.ip_address)
-
-bashio::log.info "RSTPtoWebRTC configured on port ${ingress_ip} / ${ingress_port}"
-
 # Generate config.json
 bashio::log.info "Generating config.json "
 mv /etc/services.d/rtsp-to-webrtc/config.json /app/config.json
