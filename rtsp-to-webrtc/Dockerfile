@@ -1,5 +1,8 @@
 # syntax=docker/dockerfile:1
 # https://developers.home-assistant.io/docs/add-ons/configuration#add-on-dockerfile
+#
+# Example build command from add-on root directory:
+# $ docker build --build-arg BUILD_FROM="homeassistant/amd64-base:latest" --build-arg "BUILD_ARCH=amd64" --build-arg TEMPIO_VERSION=2021.09.0 -t rtsp-to-webrtc rtsp-to-webrtc
 
 ARG BUILD_FROM
 ARG GO_VERSION=1.16
@@ -13,13 +16,13 @@ ARG REPO=github.com/deepch/RTSPtoWebRTC
 
 RUN apt-get install git
 
-RUN git clone --depth 1 https://$REPO /app/$REPO
+WORKDIR /build/$REPO
 
-WORKDIR /app/$REPO
-
+RUN git clone --depth 1 https://$REPO .
 RUN go get
 RUN go mod download
 RUN CGO_ENABLED=0 go build -a -o /app/rtsp-to-webrtc
+RUN cp -rp web /app
 
 ##
 ## Deploy
@@ -42,7 +45,6 @@ COPY rootfs /
 
 ENV GO111MODULE="on"
 ENV GIN_MODE="release"
-
-COPY --from=prepare /app/rtsp-to-webrtc .
+COPY --from=prepare /app /app
 
 EXPOSE 8083
