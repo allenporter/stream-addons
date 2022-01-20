@@ -1,4 +1,7 @@
 # syntax=docker/dockerfile:1
+#
+# Example build command from add-on root directory:
+# $ docker build --build-arg BUILD_FROM="homeassistant/amd64-base:latest" --build-arg "BUILD_ARCH=amd64" --build-arg TEMPIO_VERSION=2021.09.0 -t rtsp-to-web rtsp-to-web
 
 ARG BUILD_FROM
 ARG GO_VERSION=1.16
@@ -12,12 +15,16 @@ ARG REPO=github.com/deepch/RTSPtoWeb
 
 RUN apt-get install git
 
-RUN git clone --depth 1 https://$REPO /app/$REPO
+WORKDIR /build/$REPO
 
-WORKDIR /app/$REPO
+RUN git clone https://$REPO .
+# CGO_ENABLED=0 build failed after this revision
+RUN git reset --hard cac65c1f55932f3e62b6fa006e2cc1eb4caa669c
 
+RUN go get
 RUN go mod download
-RUN go build -a -o /app/rtsp-to-web
+RUN CGO_ENABLED=0 go build -a -o /app/rtsp-to-web
+RUN cp -rp web /app
 
 ##
 ## Deploy
@@ -28,7 +35,7 @@ FROM $BUILD_FROM
 ARG TEMPIO_VERSION=2021.09.0
 ARG BUILD_ARCH
 
-WORKDIR /go/src/app
+WORKDIR /app
 
 # Execute during the build of the image
 RUN \
@@ -40,14 +47,7 @@ COPY rootfs /
 
 ENV GO111MODULE="on"
 ENV GIN_MODE="release"
-
-WORKDIR /app
-
-COPY --from=prepare /app/rtsp-to-web .
+COPY --from=prepare /app /app
+RUN chmod +x /app/rtsp-to-web
 
 EXPOSE 8083
-
-ENTRYPOINT ["./app/rtsp-to-web"]
-
-
-

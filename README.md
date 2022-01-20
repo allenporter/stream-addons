@@ -25,7 +25,7 @@ _RTSP Stream to Web server that supports WebRTC, and more protocols. This server
 [armv7-shield]: https://img.shields.io/badge/armv7-yes-green.svg
 [i386-shield]: https://img.shields.io/badge/i386-yes-green.sv
 
-g### [RTSPToWebRTCP add-on](./rtsp-to-webrtc)
+### [RTSPToWebRTCP add-on](./rtsp-to-webrtc)
 
 _RTSP Stream to WebBrowser over WebRTC based on Pion. This is a Home Assistant Add-on packaging the project https://github.com/deepch/RTSPtoWebRTC -- however, users should prefer to install RTSPtoWeb instead to get more fully featured server with the same features._
 
