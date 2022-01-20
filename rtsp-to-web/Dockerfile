@@ -18,8 +18,6 @@ RUN apt-get install git
 WORKDIR /build/$REPO
 
 RUN git clone https://$REPO .
-# CGO_ENABLED=0 build failed after this revision
-RUN git reset --hard cac65c1f55932f3e62b6fa006e2cc1eb4caa669c
 
 RUN go get
 RUN go mod download

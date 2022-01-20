@@ -1,4 +1,4 @@
-# Home Assistant Add-on: RTSPtoWeb
+# Home Assistant Add-on: RTSPtoWeb - WebRTC
 
 _RTSP Stream to WebBrowser over WebRTC based on Pion. This is a Home Assistant Add-on packaging for an existing project https://github.com/deepch/RTSPtoWeb_
 

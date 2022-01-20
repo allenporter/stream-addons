@@ -1,8 +1,8 @@
-# Home Assistant Add-on: RTSPtoWeb
+# Home Assistant Add-on: RTSPtoWeb - WebRTC
 
 ## How to use
 
-This add-on is a standalone server that proxies RTSP streams as WebRTC, and other streaming protocols. To work in Home Assistant, you also need to configure the *RTSPtoWebRTC* integration.
+This add-on is a standalone server that proxies RTSP streams as WebRTC, and other streaming protocols. To work in Home Assistant, you also need to configure the *RTSPtoWebRTC* integration which should automatically discover this service.
 
 See https://www.home-assistant.io/integrations/rtsp_to_webrtc/ for details on the integration and how it works in Home Assistant.
 
