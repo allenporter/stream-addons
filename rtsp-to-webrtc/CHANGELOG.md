@@ -1,5 +1,10 @@
 <!-- https://developers.home-assistant.io/docs/add-ons/presentation#keeping-a-changelog -->
 
+## 0.0.7
+
+- Additional fixes for initial development and testing
+- Fix nil map error due to missing "streams" in config.json
+
 ## 0.0.6
 
 - Fixes for health checks to get initial container working end-to-end
