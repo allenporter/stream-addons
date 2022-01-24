@@ -1,5 +1,10 @@
 <!-- https://developers.home-assistant.io/docs/add-ons/presentation#keeping-a-changelog -->
 
+## 1.0.0
+
+- Initial revision, ready for beta
+- Simplified config.json setup
+
 ## 0.0.7
 
 - Additional fixes for initial development and testing

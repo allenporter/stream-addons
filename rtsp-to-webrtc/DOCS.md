@@ -12,7 +12,7 @@ See https://www.home-assistant.io/integrations/rtsp_to_webrtc/ for details on th
 
 ## Networking & Security
 
-RTSPtoWebRTC is a server that opens a port to the local network. The server exposes all available streams and does not require authentication.
+RTSPtoWebRTC is a server that opens a port to the local network. The server exposes all available streams and does not require authentication. You should only use this Add-on if you are comfortable with the security implications.
 
 ## Troubleshooting
 
