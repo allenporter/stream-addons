@@ -4,10 +4,6 @@
 # s6-overlay docs: https://github.com/just-containers/s6-overlay
 # ==============================================================================
 
-# Generate config.json
-bashio::log.info "Generating config.json "
-mv /etc/services.d/rtsp-to-webrtc/config.json /app/config.json
-
 bashio::log.info "Starting discovery service"
 ./discovery &
 
