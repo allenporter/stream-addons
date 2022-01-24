@@ -18,6 +18,13 @@ RUN apt-get install git
 WORKDIR /build/$REPO
 
 RUN git clone https://$REPO .
+RUN git fetch
+RUN git reset --hard "64289619ffa24d99ca3e0537fe37f2660cb79cf6"
+
+# Apply local patches
+COPY *.patch .
+RUN for i in *.patch; do \
+    git apply "${i}"; done
 
 RUN go get
 RUN go mod download
