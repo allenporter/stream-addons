@@ -11,7 +11,7 @@ This repository contains the following add-ons
 
 ### [RTSPToWeb add-on](./rtsp-to-web)
 
-_RTSP Stream to Web server that supports WebRTC, and more protocols. This server is based on Pion. This is a Home Assistant Add-on packaging for the project https://github.com/deepch/RTSPtoWeb and generally, this is a strongly improved version of RTSPtoWebRTC and should be preferred.
+_RTSP Stream to Web server that supports WebRTC, and more protocols. This server is based on Pion. This is a Home Assistant Add-on packaging for the project https://github.com/deepch/RTSPtoWeb and generally, this is a strongly improved version of RTSPtoWebRTC and should be preferred._
 
 ![Supports aarch64 Architecture][aarch64-shield]
 ![Supports amd64 Architecture][amd64-shield]
