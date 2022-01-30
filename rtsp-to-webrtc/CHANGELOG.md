@@ -1,5 +1,9 @@
 <!-- https://developers.home-assistant.io/docs/add-ons/presentation#keeping-a-changelog -->
 
+## 1.0.1
+
+- Fixes docker images for non-x86 architectures
+
 ## 1.0.0
 
 - Initial revision, ready for beta
