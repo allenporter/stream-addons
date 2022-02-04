@@ -7,9 +7,6 @@
 bashio::log.info "Starting discovery service"
 ./discovery &
 
-bashio::log.info "Showing configuration file"
-cd /app
-cat config.json
-
 bashio::log.info "Starting RSTPtoWebRTC"
+cd /app
 exec /app/rtsp-to-web
