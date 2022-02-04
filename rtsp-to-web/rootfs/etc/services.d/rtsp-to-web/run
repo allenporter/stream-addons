@@ -8,5 +8,5 @@ bashio::log.info "Starting discovery service"
 ./discovery &
 
 bashio::log.info "Starting RSTPtoWebRTC"
-cd /app
+cd /data
 exec /app/rtsp-to-web

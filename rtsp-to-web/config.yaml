@@ -21,5 +21,9 @@ arch:
   - aarch64
   - amd64
   - i386
+options:
+  debug: false
+  http_port: 8083
+  rtsp_port:
 init: false
 image: "ghcr.io/allenporter/{arch}-rtsp-to-web"
