@@ -6,10 +6,10 @@ config=/app/config.json
 
 bashio::log.info "Applying configuration"
 
-debug=$(bashio::config 'debug')
-log_level=$(bashio::config 'log_level')
-http_port=$(bashio::config 'http_port')
-rtsp_port=$(bashio::config 'rtsp_port')
+debug=$(bashio::config 'debug' 'false')
+log_level=$(bashio::config 'log_level' 'info')
+http_port=$(bashio::config 'http_port' '8083')
+rtsp_port=$(bashio::config 'rtsp_port' '5541')
 
 sed -i "s/%%debug%%/${debug}/g" ${config}
 sed -i "s/%%log_level%%/${log_level}/g" ${config}
