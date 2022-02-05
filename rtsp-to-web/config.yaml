@@ -5,8 +5,12 @@ slug: rtsp-to-web
 description: RTSP Stream to WebBrowser over WebRTC and other protocols based on Pion
 url: "https://github.com/allenporter/stream-addons/tree/main/rtsp-to-web"
 panel_icon: mdi:webrtc
-webui: "http://[HOST]:[PORT:8083]"
-host_network: true
+ports:
+  8083/tcp: null
+  5541/tcp: null
+ports_description:
+  8083/tcp: "RTSPtoWeb WebServer and API"
+  5541/tcp: "RTSPtoWeb RTSP"
 discovery: ["rtsp_to_webrtc"]
 watchdog: "http://[HOST]:[PORT:8083]/"
 arch:

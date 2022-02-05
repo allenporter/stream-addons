@@ -7,10 +7,14 @@ declare http_port
 
 http_port=$(bashio::config 'http_port')
 
+# Wait for server to start before proceeding
+bashio::net.wait_for "${http_port}"
+
 # Create discovery config payload for Home Assistant
+
 config=$(bashio::var.json \
-    host 127.0.0.1 \
-    port $http_port \
+    host "$(bashio::addon.hostname)" \
+    port "${http_port}" \
 )
 
 # Send discovery info
