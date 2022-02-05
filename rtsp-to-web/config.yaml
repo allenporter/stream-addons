@@ -26,4 +26,4 @@ schema:
   rtsp_port: int
   log_level: list(trace|debug|info|warn|error|fatal|panic)
 init: false
-#image: "ghcr.io/allenporter/{arch}-rtsp-to-web"
+image: "ghcr.io/allenporter/{arch}-rtsp-to-web"
