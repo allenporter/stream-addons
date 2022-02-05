@@ -3,20 +3,19 @@
 # Send Discovery information to Home Assistant
 # ==============================================================================
 declare config
-declare ingress_port
+declare http_port
 
-# Wait for server to start before proceeding
-ingress_port=$(bashio::addon.ingress_port)
+http_port=$(bashio::config 'http_port')
 
 # Create discovery config payload for Home Assistant
 config=$(bashio::var.json \
     host 127.0.0.1 \
-    port 8083 \
+    port $http_port \
 )
 
 # Send discovery info
 if bashio::discovery "rtsp_to_webrtc" "${config}" > /dev/null; then
-    bashio::log.info "Successfully send discovery information to Home Assistant."
+    bashio::log.info "Successfully send discovery information to Home Assistant ($http_port)."
 else
     bashio::log.error "Discovery message to Home Assistant failed!"
 fi

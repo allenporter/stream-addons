@@ -36,10 +36,10 @@ RUN CGO_ENABLED=0 go build -a -o /app/rtsp-to-web
 RUN cp -rp web /app
 RUN chmod +x /app/rtsp-to-web
 
-WORKDIR /app
-
 # Copy root filesystem
 COPY rootfs /
+
+WORKDIR /app
 
 ENV GO111MODULE="on"
 ENV GIN_MODE="release"

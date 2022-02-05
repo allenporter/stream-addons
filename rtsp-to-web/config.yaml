@@ -6,12 +6,6 @@ description: RTSP Stream to WebBrowser over WebRTC and other protocols based on 
 url: "https://github.com/allenporter/stream-addons/tree/main/rtsp-to-web"
 panel_icon: mdi:webrtc
 webui: "http://[HOST]:[PORT:8083]"
-ports:
-  8083/tcp: 8083
-  5541/tcp: 5541
-ports_description:
-  8083/tcp: "RTSPtoWeb WebServer and API"
-  5541/tcp: "RTSPtoWeb RTSP"
 host_network: true
 discovery: ["rtsp_to_webrtc"]
 watchdog: "http://[HOST]:[PORT:8083]/"
@@ -21,5 +15,15 @@ arch:
   - aarch64
   - amd64
   - i386
+options:
+  debug: false
+  http_port: 8083
+  rtsp_port: 5541
+  log_level: info
+schema:
+  debug: bool
+  http_port: int
+  rtsp_port: int
+  log_level: list(trace|debug|info|warn|error|fatal|panic)
 init: false
 image: "ghcr.io/allenporter/{arch}-rtsp-to-web"

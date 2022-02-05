@@ -1,0 +1,20 @@
+#!/usr/bin/with-contenv bashio
+#
+# Creates initial RTSPtoWeb confiugration
+
+config=/app/config.json
+
+bashio::log.info "Applying configuration"
+
+debug=$(bashio::config 'debug' 'false')
+log_level=$(bashio::config 'log_level' 'info')
+http_port=$(bashio::config 'http_port' '8083')
+rtsp_port=$(bashio::config 'rtsp_port' '5541')
+
+sed -i "s/%%debug%%/${debug}/g" ${config}
+sed -i "s/%%log_level%%/${log_level}/g" ${config}
+sed -i "s/%%http_port%%/${http_port}/g" ${config}
+sed -i "s/%%rtsp_port%%/${rtsp_port}/g" ${config}
+
+bashio::log.info "Reporting final configuration"
+cat ${config}
