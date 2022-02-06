@@ -3,45 +3,43 @@
 # Example build command from add-on root directory:
 # $ docker build --build-arg BUILD_FROM="homeassistant/amd64-base:latest" --build-arg "BUILD_ARCH=amd64" --build-arg TEMPIO_VERSION=2021.09.0 -t rtsp-to-web rtsp-to-web
 
-ARG BUILD_FROM
-
 # https://developers.home-assistant.io/docs/add-ons/configuration#add-on-dockerfile
-FROM $BUILD_FROM
-ARG TEMPIO_VERSION=2021.09.0
-ARG BUILD_ARCH
+ARG BUILD_FROM=ghcr.io/hassio-addons/base/amd64:11.0.1
 
-# Execute during the build of the image
+
+FROM golang:1.17.6-alpine3.15 AS build
+
+RUN apk add --no-cache git
+
+# Clone repo
+ARG REPO="deepch/RTSPtoWeb"
+WORKDIR /workspace
 RUN \
-    curl -sSLf -o /usr/bin/tempio \
-    "https://github.com/home-assistant/tempio/releases/download/${TEMPIO_VERSION}/tempio_${BUILD_ARCH}"
-
-
-RUN apk add go git
-
-ARG REPO=github.com/deepch/RTSPtoWeb
-WORKDIR /build/$REPO
-
-RUN git clone https://$REPO .
-RUN git fetch
-RUN git reset --hard "64289619ffa24d99ca3e0537fe37f2660cb79cf6"
+    git clone https://github.com/$REPO . \
+    && git reset --hard "64289619ffa24d99ca3e0537fe37f2660cb79cf6"
 
 # Apply local patches
 COPY *.patch .
-RUN for i in *.patch; do \
-    git apply "${i}"; done
+RUN git apply -- *.patch
 
-RUN go get
-RUN go mod download
-RUN CGO_ENABLED=0 go build -a -o /app/rtsp-to-web
-RUN cp -rp web /app
-RUN chmod +x /app/rtsp-to-web
-
-# Copy root filesystem
-COPY rootfs /
-
-WORKDIR /app
-
+# Build
 ENV GO111MODULE="on"
 ENV GIN_MODE="release"
+ENV CGO_ENABLED="0"
+RUN \
+    go get \
+    && go mod download \
+    && go build -a -o ./rtsp-to-web
 
-EXPOSE 8083
+
+FROM scratch AS rootfs
+
+COPY rootfs /
+COPY --from=build /workspace/web /app/web
+COPY --from=build /workspace/rtsp-to-web /app/rtsp-to-web
+
+
+FROM $BUILD_FROM
+
+# Copy root filesystem
+COPY --from=rootfs / /
