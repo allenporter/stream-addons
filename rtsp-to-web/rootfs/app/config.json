@@ -4,9 +4,9 @@
     "http_debug": false,
     "http_demo": true,
     "http_dir": "web",
-    "http_port": ":%%http_port%%",
+    "http_port": "0.0.0.0:%%http_port%%",
     "log_level": "%%log_level%%",
-    "rtsp_port": ":%%rtsp_port%%",
+    "rtsp_port": "0.0.0.0:%%rtsp_port%%",
     "https": false,
     "token": { }
   },
