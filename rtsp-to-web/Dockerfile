@@ -6,6 +6,9 @@
 # https://developers.home-assistant.io/docs/add-ons/configuration#add-on-dockerfile
 ARG BUILD_ARCH=amd64
 
+ARG GO111MODULE="on"
+ARG GIN_MODE="release"
+
 
 FROM golang:1.17.6-alpine3.15 AS build
 
@@ -23,9 +26,9 @@ COPY *.patch .
 RUN git apply -- *.patch
 
 # Build
-ENV GO111MODULE="on"
-ENV GIN_MODE="release"
-ENV CGO_ENABLED="0"
+ARG GO111MODULE
+ARG GIN_MODE
+ARG CGO_ENABLED="0"
 RUN \
     go get \
     && go mod download \
@@ -40,6 +43,11 @@ COPY --from=build /workspace/rtsp-to-web /app/rtsp-to-web
 
 
 FROM ghcr.io/hassio-addons/base/${BUILD_ARCH}:11.0.1
+
+ARG GO111MODULE
+ARG GIN_MODE
+ENV GO111MODULE="${GO111MODULE}"
+ENV GIN_MODE="${GIN_MODE}"
 
 # Copy root filesystem
 COPY --from=rootfs / /
