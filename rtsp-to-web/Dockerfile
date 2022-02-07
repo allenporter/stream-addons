@@ -1,10 +1,10 @@
 # syntax=docker/dockerfile:1
 #
 # Example build command from add-on root directory:
-# $ docker build --build-arg BUILD_FROM="homeassistant/amd64-base:latest" --build-arg "BUILD_ARCH=amd64" --build-arg TEMPIO_VERSION=2021.09.0 -t rtsp-to-web rtsp-to-web
+# $ docker build --tag rtsp-to-web rtsp-to-web
 
 # https://developers.home-assistant.io/docs/add-ons/configuration#add-on-dockerfile
-ARG BUILD_FROM=ghcr.io/hassio-addons/base/amd64:11.0.1
+ARG BUILD_ARCH=amd64
 
 
 FROM golang:1.17.6-alpine3.15 AS build
@@ -39,7 +39,7 @@ COPY --from=build /workspace/web /app/web
 COPY --from=build /workspace/rtsp-to-web /app/rtsp-to-web
 
 
-FROM $BUILD_FROM
+FROM ghcr.io/hassio-addons/base/${BUILD_ARCH}:11.0.1
 
 # Copy root filesystem
 COPY --from=rootfs / /
