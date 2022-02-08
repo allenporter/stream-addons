@@ -15,13 +15,8 @@ RUN apk add --no-cache git go
 # Clone repo
 ARG REPO="deepch/RTSPtoWeb"
 WORKDIR /workspace
-RUN \
-    git clone https://github.com/$REPO . \
-    && git reset --hard "64289619ffa24d99ca3e0537fe37f2660cb79cf6"
+RUN git clone https://github.com/$REPO .
 
-# Apply local patches
-COPY *.patch .
-RUN git apply -- *.patch
 
 # Build
 ENV GO111MODULE="on"
