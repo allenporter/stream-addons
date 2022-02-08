@@ -8,5 +8,4 @@ bashio::log.info "Starting discovery service"
 ./discovery &
 
 bashio::log.info "Starting RSTPtoWeb"
-cd /app
-exec ./rtsp-to-web
+exec /app/rtsp-to-web --config /data/config.json

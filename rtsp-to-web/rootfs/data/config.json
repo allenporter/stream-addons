@@ -1,0 +1,14 @@
+{
+  "server": {
+    "debug": false,
+    "http_debug": false,
+    "http_demo": true,
+    "http_dir": "/app/web",
+    "http_port": ":8083",
+    "log_level": "info",
+    "rtsp_port": ":5541",
+    "https": false,
+    "token": { }
+  },
+  "streams": { }
+}
