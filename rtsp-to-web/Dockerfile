@@ -11,9 +11,9 @@ ARG GO111MODULE="on"
 ARG GIN_MODE="release"
 
 
-FROM golang:1.17.6-alpine3.15 AS build
+FROM ${BUILD_FROM} AS build
 
-RUN apk add --no-cache git
+RUN apk add --no-cache go=~1.17.6-r0 git=~2.35.1-r0
 
 # Clone repo
 ARG REPO="deepch/RTSPtoWeb"
