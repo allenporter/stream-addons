@@ -8,12 +8,7 @@ ARG BUILD_ARCH="amd64"
 ARG BUILD_FROM="ghcr.io/hassio-addons/base/${BUILD_ARCH}:11.0.1"
 
 
-FROM ${BUILD_FROM} AS base
-
-ENV GIN_MODE="release"
-
-
-FROM base AS build
+FROM ${BUILD_FROM} AS build
 
 RUN apk add --no-cache git go=~1.17.4-r0
 
@@ -44,7 +39,9 @@ COPY --from=build /workspace/web /app/web
 COPY --from=build /workspace/rtsp-to-web /app/rtsp-to-web
 
 
-FROM base
+FROM ${BUILD_FROM}
+
+ENV GIN_MODE="release"
 
 # Copy root filesystem
 COPY --from=rootfs / /
