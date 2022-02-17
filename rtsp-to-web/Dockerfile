@@ -7,13 +7,15 @@
 ARG BUILD_ARCH="amd64"
 ARG BUILD_FROM="ghcr.io/hassio-addons/base/${BUILD_ARCH}:11.0.1"
 
-ARG GO111MODULE="on"
-ARG GIN_MODE="release"
+
+FROM ${BUILD_FROM} AS base
+
+ENV GIN_MODE="release"
 
 
-FROM ${BUILD_FROM} AS build
+FROM base AS build
 
-RUN apk add --no-cache go=~1.17.4-r0 git=~2.34.1-r0
+RUN apk add --no-cache git go=~1.17.4-r0
 
 # Clone repo
 ARG REPO="deepch/RTSPtoWeb"
@@ -27,9 +29,8 @@ COPY *.patch .
 RUN git apply -- *.patch
 
 # Build
-ARG GO111MODULE
-ARG GIN_MODE
-ARG CGO_ENABLED="0"
+ENV GO111MODULE="on"
+ENV CGO_ENABLED="0"
 RUN \
     go get \
     && go mod download \
@@ -43,12 +44,7 @@ COPY --from=build /workspace/web /app/web
 COPY --from=build /workspace/rtsp-to-web /app/rtsp-to-web
 
 
-FROM ${BUILD_FROM}
-
-ARG GO111MODULE
-ARG GIN_MODE
-ENV GO111MODULE="${GO111MODULE}"
-ENV GIN_MODE="${GIN_MODE}"
+FROM base
 
 # Copy root filesystem
 COPY --from=rootfs / /
