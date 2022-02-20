@@ -10,7 +10,7 @@ ARG BUILD_FROM="ghcr.io/home-assistant/${BUILD_ARCH}-base:latest"
 
 FROM ${BUILD_FROM} AS build
 
-RUN apk add --no-cache git go=~1.17.4-r0
+RUN apk add --no-cache git go
 
 # Clone repo
 ARG REPO="deepch/RTSPtoWeb"
