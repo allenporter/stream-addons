@@ -16,10 +16,10 @@ arch:
   - amd64
   - i386
 options:
+  log_level: info
   debug: false
   http_port: 8083
   rtsp_port: 5541
-  log_level: info
   insecure_skip_verify: false
 schema:
   debug: bool

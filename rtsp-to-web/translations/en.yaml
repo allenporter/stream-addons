@@ -1,0 +1,16 @@
+configuration:
+  log_level:
+    name: Log Level
+    description: Log
+  debug:
+    name: Debug
+    description: Enable debug logging in the RTSPtoWeb server
+  description:   http_port:
+    name: HTTP Server/API port
+    description: Port used for the WebServer UI and API used by Home Assistant
+  rtsp_port:
+    name: RTSP Port
+    description: Port used to proxy RTSP streams over RTSP
+  insecure_skip_verify:
+    name: Disable SSL Verification
+    description: Disable SSL verification so that errors verifying RTSPS stream certificates are ignored.
