@@ -7,6 +7,6 @@
 bashio::log.info "Starting discovery service"
 ./discovery &
 
-bashio::log.info "Starting RSTPtoWebRTC"
+bashio::log.info "Starting RSTPtoWeb"
 cd /app
-exec /app/rtsp-to-web
+exec ./rtsp-to-web

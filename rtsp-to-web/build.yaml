@@ -1,4 +1,4 @@
-# https://developers.home-assistant.io/docs/add-ons/configuration#add-on-dockerfile
+# https://developers.home-assistant.io/docs/add-ons/configuration/#add-on-extended-build
 build_from:
   aarch64: "ghcr.io/home-assistant/aarch64-base:3.14"
   amd64: "ghcr.io/home-assistant/amd64-base:3.14"
@@ -10,5 +10,3 @@ labels:
   org.opencontainers.image.description: "RTSP Stream to WebBrowser over WebRTC based on Pion."
   org.opencontainers.image.source: "https://github.com/allenporter/stream-addons"
   org.opencontainers.image.licenses: "Apache License 2.0"
-args:
-  TEMPIO_VERSION: "2021.05.0"
