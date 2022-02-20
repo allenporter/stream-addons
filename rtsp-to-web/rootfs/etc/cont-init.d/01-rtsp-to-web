@@ -21,6 +21,7 @@ debug=$(bashio::config 'debug' 'false')
 log_level=$(bashio::config 'log_level' 'info')
 http_port=$(bashio::config 'http_port' '8083')
 rtsp_port=$(bashio::config 'rtsp_port' '5541')
+insecure_skip_verify=$(bashio::config 'insecure_skip_verify' 'false')
 
 
 # Rewrite the config file with latest options
@@ -32,5 +33,6 @@ cat ${config} \
     | jq ".server.log_level = \"${log_level}\"" \
     | jq ".server.http_port = \":${http_port}\"" \
     | jq ".server.rtsp_port = \":${rtsp_port}\"" \
+    | jq ".channel_defaults.insecure_skip_verify = \":${insecure_skip_verify}\"" \
         > ${config_tmp}
 mv ${config_tmp} ${config}
