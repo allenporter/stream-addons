@@ -1,20 +1,36 @@
 #!/usr/bin/with-contenv bashio
 #
-# Creates initial RTSPtoWeb confiugration
+# Update the RTSPtoWeb configuration based on the currently defined options.
+# This is careful to preserve the existing config and only update the options
+# so that any existins streams are preserved.
 
-config=/app/config.json
+orig_config="/app/config.json"
+data_dir="/data"
+config="${data_dir}/config.json"
 
-bashio::log.info "Applying configuration"
+if [ ! -f "${config}" ]; then
+    bashio::log.info "Creating configuration"
+    mkdir -p /data/
+    cp ${orig_config} ${config}
+else
+    bashio::log.info "Updating configuration"
+fi
 
+# Get latest options
 debug=$(bashio::config 'debug' 'false')
 log_level=$(bashio::config 'log_level' 'info')
 http_port=$(bashio::config 'http_port' '8083')
 rtsp_port=$(bashio::config 'rtsp_port' '5541')
 
-sed -i "s/%%debug%%/${debug}/g" ${config}
-sed -i "s/%%log_level%%/${log_level}/g" ${config}
-sed -i "s/%%http_port%%/${http_port}/g" ${config}
-sed -i "s/%%rtsp_port%%/${rtsp_port}/g" ${config}
 
-bashio::log.info "Reporting final configuration"
-cat ${config}
+# Rewrite the config file with latest options
+config_bak="${config}.bak"
+config_tmp="${config}.tmp"
+cp ${config} ${config_bak}
+cat ${config} \
+    | jq ".server.debug = ${debug}" \
+    | jq ".server.log_level = \"${log_level}\"" \
+    | jq ".server.http_port = \":${http_port}\"" \
+    | jq ".server.rtsp_port = \":${rtsp_port}\"" \
+        > ${config_tmp}
+mv ${config_tmp} ${config}
