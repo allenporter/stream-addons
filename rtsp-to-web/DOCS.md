@@ -4,9 +4,7 @@
 
 This add-on runs a standalone [RTSPtoWeb](https://github.com/deepch/RTSPtoWeb) server that proxies RTSP streams as WebRTC, and other streaming protocols. To work in Home Assistant, you also need to configure the *RTSPtoWebRTC* [integration](https://www.home-assistant.io/integrations/rtsp_to_webrtc/) which should automatically discover this service.
 
-<div class='videoWrapper'>
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/6hJXenSZJ5M" frameborder="0" allowfullscreen></iframe>
-</div>
+See the [installation video](https://www.youtube.com/watch?v=6hJXenSZJ5M) for help on following these setups for setup:
 
 1. You should already have a camera configured with Home Assistant (e.g. using a lovelace card like *Picture glance card* set to *live*, or the standard entity card. Note that Low Latency HLS (LL-HLS) is enabled by default in Home Assitant and may be sufficient for your needs. If so, no need to install this Add-on.
 
