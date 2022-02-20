@@ -5,7 +5,7 @@ configuration:
   debug:
     name: Debug
     description: Enable debug logging in the RTSPtoWeb server
-  description:   http_port:
+  http_port:
     name: HTTP Server/API port
     description: Port used for the WebServer UI and API used by Home Assistant
   rtsp_port:
