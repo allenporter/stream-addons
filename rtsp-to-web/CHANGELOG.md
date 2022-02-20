@@ -1,5 +1,13 @@
 <!-- https://developers.home-assistant.io/docs/add-ons/presentation#keeping-a-changelog -->
 
+## 1.1.0
+
+- Update to RTSPtoWeb 1.0.0 with bug fixes
+- Improved configuration options for ports, debug, logging
+- New configuration option to ignore invalid RTSPS certificates (unifi protect)
+- Optimized docker image. Thanks @felipecrs!
+- Improved documentation
+
 ## 1.0.1
 
 - Fixes docker image for armv7

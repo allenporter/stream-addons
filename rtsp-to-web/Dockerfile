@@ -7,15 +7,15 @@
 ARG BUILD_ARCH="amd64"
 ARG BUILD_FROM="ghcr.io/home-assistant/${BUILD_ARCH}-base:latest"
 
-
 FROM ${BUILD_FROM} AS build
 
 RUN apk add --no-cache git go
 
 # Clone repo
-ARG REPO="deepch/RTSPtoWeb"
+ARG RTSPTOWEB_REPO="deepch/RTSPtoWeb"
+ARG RTSPTOWEB_VERSION="latest"
 WORKDIR /workspace
-RUN git clone https://github.com/$REPO .
+RUN git clone -b $RTSPTOWEB_VERSION https://github.com/$RTSPTOWEB_REPO .
 
 
 # Build
