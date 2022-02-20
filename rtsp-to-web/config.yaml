@@ -20,10 +20,12 @@ options:
   http_port: 8083
   rtsp_port: 5541
   log_level: info
+  insecure_skip_verify: false
 schema:
   debug: bool
   http_port: int
   rtsp_port: int
   log_level: list(trace|debug|info|warn|error|fatal|panic)
+  insecure_skip_verify: false
 init: false
 image: "ghcr.io/allenporter/{arch}-rtsp-to-web"

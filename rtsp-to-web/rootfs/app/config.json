@@ -10,5 +10,8 @@
     "https": false,
     "token": { }
   },
+  "channel_defaults": {
+    "insecure_skip_verify": false
+  },
   "streams": { }
 }
