@@ -1,5 +1,9 @@
 <!-- https://developers.home-assistant.io/docs/add-ons/presentation#keeping-a-changelog -->
 
+## 1.2.0
+
+- Update to [RTSPtoWeb 2.1.0](https://github.com/deepch/RTSPtoWeb/releases/tag/v2.1.0) with audio stuttering improvements, crash fixes, and Web UI improvements
+
 ## 1.1.0
 
 - Update to RTSPtoWeb 1.0.0 with bug fixes
