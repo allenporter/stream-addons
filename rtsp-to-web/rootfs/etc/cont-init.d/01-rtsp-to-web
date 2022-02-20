@@ -33,6 +33,6 @@ cat ${config} \
     | jq ".server.log_level = \"${log_level}\"" \
     | jq ".server.http_port = \":${http_port}\"" \
     | jq ".server.rtsp_port = \":${rtsp_port}\"" \
-    | jq ".channel_defaults.insecure_skip_verify = \":${insecure_skip_verify}\"" \
+    | jq ".channel_defaults.insecure_skip_verify = ${insecure_skip_verify}" \
         > ${config_tmp}
 mv ${config_tmp} ${config}
