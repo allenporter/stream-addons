@@ -5,7 +5,7 @@
 
 # https://developers.home-assistant.io/docs/add-ons/configuration#add-on-dockerfile
 ARG BUILD_ARCH="amd64"
-ARG BUILD_FROM="ghcr.io/hassio-addons/base/${BUILD_ARCH}:11.0.1"
+ARG BUILD_FROM="ghcr.io/home-assistant/${BUILD_ARCH}-base:latest"
 
 
 FROM ${BUILD_FROM} AS build
