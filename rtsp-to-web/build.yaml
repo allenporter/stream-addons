@@ -6,7 +6,7 @@ build_from:
   armv7: "ghcr.io/home-assistant/armv7-base:3.14"
   i386: "ghcr.io/home-assistant/i386-base:3.14"
 args:
-  # renovate: registryUrl=https://github.com/deepch/RTSPtoWeb
+  # renovate: datasource=github-releases depName=deepch/RTSPtoWeb
   RTSPTOWEB_VERSION: v2.1.0
   RTSPTOWEB_REPO: deepch/RTSPtoWeb
 labels:

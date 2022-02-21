@@ -8,9 +8,8 @@
     {
       "fileMatch": [".+/build\\.yaml$"],
       "matchStrings": [
-        "registryUrl=(?<depName>.*?)\n.*_VERSION: (?<currentValue>.*)\n",
+        "datasource=(?<datasource>.*?) depName=(?<depName>.*?)\\s.*?_VERSION: (?<currentValue>.*)\\s",
       ],
-      "datasourceTemplate": "github-releases",
     },
   ],
 }
