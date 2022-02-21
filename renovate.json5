@@ -1,0 +1,16 @@
+{
+  "extends": [
+    "config:base"
+  ],
+  "timezone": "America/Los_Angeles",
+  "assignees": ["allenporter"],
+  "regexManagers": [
+    {
+      "fileMatch": [".+/build\\.yaml$"],
+      "matchStrings": [
+        "registryUrl=(?<depName>.*?)\n.*_VERSION: (?<currentValue>.*)\n",
+      ],
+      "datasourceTemplate": "github-releases",
+    },
+  ],
+}
