@@ -7,7 +7,7 @@ build_from:
   i386: "ghcr.io/home-assistant/i386-base:3.14"
 args:
   # renovate: datasource=github-releases depName=deepch/RTSPtoWeb
-  RTSPTOWEB_VERSION: v2.2.2
+  RTSPTOWEB_VERSION: v2.3.0
   RTSPTOWEB_REPO: deepch/RTSPtoWeb
 labels:
   org.opencontainers.image.title: "Home Assistant Add-on: RTSPtoWebRTC"
