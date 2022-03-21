@@ -21,15 +21,13 @@ options:
   http_port: 8083
   rtsp_port: 5541
   insecure_skip_verify: false
-  ice_servers:
-    - stun:stun.l.google.com:19302
-  ice_username: ""
-  ice_credential: ""
+  disable_google_stun: false
 schema:
   debug: bool
   http_port: int
   rtsp_port: int
   log_level: list(trace|debug|info|warn|error|fatal|panic)
   insecure_skip_verify: bool
+  disable_google_stun: bool
 init: false
 image: "ghcr.io/allenporter/{arch}-rtsp-to-web"

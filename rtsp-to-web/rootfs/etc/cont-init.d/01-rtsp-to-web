@@ -20,13 +20,16 @@ fi
 debug=$(bashio::config 'debug' 'false')
 log_level=$(bashio::config 'log_level' 'info')
 http_port=$(bashio::config 'http_port' '8083')
-ice_servers=$(bashio::config 'ice_servers' '["stun.l.google.com:19302"]')
-ice_username=$(bashio::config 'ice_username', '')
-ice_credential=$(bashio::config 'ice_credential', '')
+disable_google_stun=$(bashio::config 'disable_google_stun' 'false')
 
 rtsp_port=$(bashio::config 'rtsp_port' '5541')
 insecure_skip_verify=$(bashio::config 'insecure_skip_verify' 'false')
 
+ice_servers='["stun:stun.l.google.com:19302"]'
+if [ "$disable_google_stun" = "true" ]
+then
+    ice_servers='[]'
+fi
 
 # Rewrite the config file with latest options
 config_bak="${config}.bak"
@@ -36,9 +39,7 @@ cat ${config} \
     | jq ".server.debug = ${debug}" \
     | jq ".server.log_level = \"${log_level}\"" \
     | jq ".server.http_port = \":${http_port}\"" \
-    | jq ".server.ice_servers = \":${ice_servers}\"" \
-    | jq ".server.ice_username = \":${ice_username}\"" \
-    | jq ".server.ice_credential = \":${ice_credential}\"" \
+    | jq ".server.ice_servers = ${ice_servers}" \
     | jq ".server.rtsp_port = \":${rtsp_port}\"" \
     | jq ".channel_defaults.insecure_skip_verify = ${insecure_skip_verify}" \
         > ${config_tmp}
