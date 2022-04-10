@@ -23,8 +23,6 @@ information on the project.
 
 RTSPtoWeb is a server that opens a port to the local network. The server exposes all available streams and does not require authentication. You should only use this Add-on if you are comfortable with the security implications.
 
-By default, Google's STUN server is enabled to assist with NAT traversal. If you'd like to disable this, there is an option in the addon configuration page
-
 ## Troubleshooting
 
 The add-on and integration may not work for your particular setup, and Home Assistant cannot support and troubleshoot user problems that are unrelated to the actual integration in Home Assistant.
