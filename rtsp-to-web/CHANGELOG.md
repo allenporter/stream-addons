@@ -1,5 +1,9 @@
 <!-- https://developers.home-assistant.io/docs/add-ons/presentation#keeping-a-changelog -->
 
+## 1.2.2
+
+- Removes unsupported watchdog url to fix supervisor error logs when watchdog enabled.
+
 ## 1.2.1
 
 - Update to [RTSPtoWeb 2.2.2](https://github.com/deepch/RTSPtoWeb/releases/tag/v2.2.2) with crash fixes, and configuration persistence across restarts
