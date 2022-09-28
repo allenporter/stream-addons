@@ -1,6 +1,6 @@
 # https://developers.home-assistant.io/docs/add-ons/configuration#add-on-config
 name: RTSPtoWeb - WebRTC
-version: "1.2.2"
+version: "1.3.0"
 slug: rtsp-to-web
 description: RTSP Stream to WebBrowser over WebRTC and other protocols based on Pion
 url: "https://github.com/allenporter/stream-addons/tree/main/rtsp-to-web"
