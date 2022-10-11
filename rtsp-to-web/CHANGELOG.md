@@ -1,5 +1,9 @@
 <!-- https://developers.home-assistant.io/docs/add-ons/presentation#keeping-a-changelog -->
 
+## 1.4.0
+
+- Update s6 overlay to v3
+
 ## 1.3.0
 
 - Update to [RTSPtoWeb 2.4.0](https://github.com/deepch/RTSPtoWeb/releases/tag/2.4.0)
